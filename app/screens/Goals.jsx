@@ -12,7 +12,8 @@ const Goals = () => {
   };
 
   const handleAddGoal = () => {
-    console.log(text);
+    setGoals((prev) => [...prev, text]); //better way to update the state if it depends on the prev state this is the best practice.
+    //[...goals, text]
   };
   return (
     <View style={styles.container}>
@@ -22,6 +23,9 @@ const Goals = () => {
       </View>
       <View style={styles.goalContainer}>
         <Text style={styles.listText}>List of goals...</Text>
+        {goals.map((item, idx) => (
+          <Text key={idx}>{item}</Text>
+        ))}
       </View>
     </View>
   );
