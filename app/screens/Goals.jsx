@@ -1,12 +1,19 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 const Goals = (props) => {
-  <View style={styles.container}>
-    <Text>hello from innerr</Text>
-    <StatusBar style='auto' />
-  </View>;
+  return (
+    <View style={styles.container}>
+      <View>
+        <TextInput placeholder='Type your goal' />
+        <Button title='ADD GOAL' />
+      </View>
+      <View>
+        <Text>List of goals...</Text>
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
