@@ -9,8 +9,8 @@ const Goals = (props) => {
         <TextInput placeholder='Type your goal' style={styles.textInput} />
         <Button title='ADD GOAL' color='#000' style={styles.button} />
       </View>
-      <View>
-        <Text>List of goals...</Text>
+      <View style={styles.goalContainer}>
+        <Text style={styles.listText}>List of goals...</Text>
       </View>
     </View>
   );
@@ -29,6 +29,13 @@ const styles = StyleSheet.create({
   textInput: {
     width: '75%',
     backgroundColor: '#fff',
+  },
+  goalContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  listText: {
+    fontWeight: 'bold',
   },
 });
 
