@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { StyleSheet, Text, TextInput, View, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, ScrollView, FlatList } from 'react-native';
 
 const Goals = () => {
   const [text, setText] = useState('');
@@ -11,9 +11,9 @@ const Goals = () => {
   };
 
   const handleAddGoal = () => {
-    setGoals((prev) => [...prev, text]); //better way to update the state if it depends on the prev state this is the best practice.
-    //[...goals, text]
+    setGoals((prev) => [...prev, text]);
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -21,14 +21,19 @@ const Goals = () => {
         <Button title='ADD GOAL' color='#000' style={styles.button} onPress={handleAddGoal} />
       </View>
       <View style={styles.goalContainer}>
-        <ScrollView>
-          <Text style={styles.listText}>List of goals...</Text>
-          {goals.map((item, idx) => (
-            <View key={idx} style={styles.goalItem}>
-              <Text>{item}</Text>
-            </View>
-          ))}
-        </ScrollView>
+        <Text style={styles.listText}>List of goals...</Text>
+        <FlatList
+          data={goals} //accepts an array i.e the goals
+          renderItem={({ item, index, separators }) => {
+            //instead of renderItem(itemData); bcos itemData is an obj and then itemData.item we destructure the item
+
+            return (
+              <View key={item.key} style={styles.goalItem}>
+                <Text>{item}</Text>
+              </View>
+            );
+          }}
+        />
       </View>
     </View>
   );
