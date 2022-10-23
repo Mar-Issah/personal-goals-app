@@ -7,16 +7,32 @@ import GoalItem from './GoalItem';
 const Goals = () => {
   const [goals, setGoals] = useState([]);
 
+  const handleAddGoal = (inputText) => {
+    setGoals((prev) => [...prev, { text: inputText, id: Math.random().toString() }]);
+  };
+
+  const deleteGoal = (id) => {
+    setGoals((prev) => prev.filter((item) => item.id !== id));
+  };
   return (
     <View style={styles.container}>
-      <GoalInput setGoals={setGoals} />
+      <GoalInput onAddGoal={handleAddGoal} />
       <View style={styles.goalContainer}>
         <Text style={styles.listText}>List of goals...</Text>
         <FlatList
           data={goals} //accepts an array i.e the goals
           renderItem={({ item, index, separators }) => {
-            //instead of renderItem(itemData); bcos itemData is an obj and then itemData.item we destructure the item
-            return <GoalItem item={item} />;
+            return (
+              <GoalItem
+                key={item.id}
+                id={item.id} //if we have keyextractor to be id then item.id
+                item={item}
+                onDeleteGoal={deleteGoal}
+              />
+            );
+          }}
+          keyExtractor={(item, index) => {
+            return item.id;
           }}
         />
       </View>

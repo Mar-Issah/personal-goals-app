@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Button } from 'react-native';
 
-const GoalInput = ({ setGoals }) => {
+const GoalInput = ({ onAddGoal }) => {
   const [text, setText] = useState('');
 
   const handleInput = (inputText) => {
     setText(inputText);
   };
 
+  //move this onto the parent component
   const handleAddGoal = () => {
-    setGoals((prev) => [...prev, text]);
+    onAddGoal(text);
     setText(''); //first set the value={text}
   };
 
