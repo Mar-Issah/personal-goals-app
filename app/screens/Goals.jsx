@@ -1,26 +1,15 @@
 import React, { useState } from 'react';
 
-import { StyleSheet, Text, TextInput, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import GoalInput from './GoalInput';
 import GoalItem from './GoalItem';
 
 const Goals = () => {
-  const [text, setText] = useState('');
   const [goals, setGoals] = useState([]);
-
-  const handleInput = (inputText) => {
-    setText(inputText);
-  };
-
-  const handleAddGoal = () => {
-    setGoals((prev) => [...prev, text]);
-  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput placeholder='Type your goal' style={styles.textInput} onChangeText={handleInput} />
-        <Button title='ADD GOAL' color='#000' style={styles.button} onPress={handleAddGoal} />
-      </View>
+      <GoalInput setGoals={setGoals} />
       <View style={styles.goalContainer}>
         <Text style={styles.listText}>List of goals...</Text>
         <FlatList
