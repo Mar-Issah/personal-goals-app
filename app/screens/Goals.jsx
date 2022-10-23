@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { StyleSheet, Text, TextInput, View, Button, ScrollView, FlatList } from 'react-native';
+import GoalItem from './GoalItem';
 
 const Goals = () => {
   const [text, setText] = useState('');
@@ -28,9 +29,10 @@ const Goals = () => {
             //instead of renderItem(itemData); bcos itemData is an obj and then itemData.item we destructure the item
 
             return (
-              <View key={item.key} style={styles.goalItem}>
-                <Text>{item}</Text>
-              </View>
+              // <View key={item.key} style={styles.goalItem}>
+              //   <Text>{item}</Text>
+              // </View>
+              <GoalItem item={item} />
             );
           }}
         />

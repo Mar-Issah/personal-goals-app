@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-const GoalItem = () => {
+const GoalItem = ({ item }) => {
   return (
     <View key={item.key} style={styles.goalItem}>
       <Text>{item}</Text>
