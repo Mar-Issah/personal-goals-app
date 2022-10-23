@@ -10,11 +10,12 @@ const GoalInput = ({ setGoals }) => {
 
   const handleAddGoal = () => {
     setGoals((prev) => [...prev, text]);
+    setText(''); //first set the value={text}
   };
 
   return (
     <View style={styles.inputContainer}>
-      <TextInput placeholder='Type your goal' style={styles.textInput} onChangeText={handleInput} />
+      <TextInput placeholder='Type your goal' style={styles.textInput} onChangeText={handleInput} value={text} />
       <Button title='ADD GOAL' color='#000' onPress={handleAddGoal} />
     </View>
   );
