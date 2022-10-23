@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Button, Modal, Image } from 'react-native';
+import { StyleSheet, TextInput, View, Button, Modal, Image, KeyboardAvoidingView } from 'react-native';
 
 const GoalInput = ({ onAddGoal, modalVisible, handleModal }) => {
   const [text, setText] = useState('');
@@ -25,10 +25,10 @@ const GoalInput = ({ onAddGoal, modalVisible, handleModal }) => {
           }}
         />
         <TextInput placeholder='Type your goal' style={styles.textInput} onChangeText={handleInput} value={text} />
-        <View style={styles.buttonContainer}>
+        <KeyboardAvoidingView style={styles.buttonContainer}>
           <Button title='ADD GOAL' color='#000' onPress={handleAddGoal} />
-          <Button title='CLOSE' color='#000' onPress={handleModal} />
-        </View>
+          <Button title='CLOSE' color='#ff0000' onPress={handleModal} />
+        </KeyboardAvoidingView>
       </View>
     </Modal>
   );
@@ -40,14 +40,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    // marginBottom: 20,
-    // borderBottomWidth: 2,
-    // borderBottomColor: '#000',
+    backgroundColor: '#8834fa',
   },
   textInput: {
     width: '100%',
-    backgroundColor: '#fff',
-    padding: 4,
+    backgroundColor: '#e4d0ff',
+    padding: 8,
   },
   buttonContainer: {
     marginTop: 8,
